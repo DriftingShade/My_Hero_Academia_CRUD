@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Heroes</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='solar.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <h1 class="text-center">All Heroes</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Quirk</th>
+            <th scope="col">Age</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for hero in heroes %}
+          <tr>
+            <td>{{ hero.first_name }}</td>
+            <td>{{ hero.last_name }}</td>
+            <td>{{ hero.quirk }}</td>
+            <td>{{ hero.age }}</td>
+            <td>
+              <form action="/edit_hero/{{hero.id}}">
+                <input type="hidden" name="id" value="{{hero.id}}" />
+                <input type="submit" class="btn btn-warning" value="Edit" />
+              </form>
+              <form action="/delete_hero/{{hero.id}}" method="post">
+                <input type="hidden" name="id" value="{{hero.id}}" />
+                <input type="submit" class="btn btn-danger" value="Delete" />
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <a href="/" class="btn btn-primary mt-3">Home</a>
+    </div>
+  </body>
+</html>

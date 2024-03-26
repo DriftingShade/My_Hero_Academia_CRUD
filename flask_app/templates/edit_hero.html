@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit A Hero!</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='solar.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1>Edit Hero</h1>
+      <div class="card mx-auto mt-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">Your Hero Information</h5>
+          <div class="mb-3">
+            <form action="/update_hero/{{hero.id}}" method="post">
+              <input type="hidden" name="id" value="{{hero.id}}" />
+              <label for="first_name" class="form-label">First Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                name="first_name"
+                value="{{hero.first_name}}"
+              />
+              <label for="last_name" class="form-label">Last Name:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="last_name"
+                name="last_name"
+                value="{{hero.last_name}}"
+              />
+              <label for="quirk" class="form-label">Quirk:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="quirk"
+                name="quirk"
+                value="{{hero.quirk}}"
+              />
+              <label for="age" class="form-label">Age:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="age"
+                name="age"
+                placeholder="{{hero.age}}"
+              />
+              <input
+                type="submit"
+                class="btn btn-primary mt-3"
+                value="Update Hero!"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+      <a href="/all_heroes" class="btn btn-primary mt-3">All Heroes</a>
+    </div>
+  </body>
+</html>
